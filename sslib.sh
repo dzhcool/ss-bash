@@ -21,7 +21,12 @@
 # 流量采样间隔,单位为秒
 INTERVEL=300
 # 指定Shadowsocks程序文件
-SSSERVER=ssserver
+if [ -f /usr/bin/ssserver ]; then
+    BIN=/usr/bin/ssserver
+elif [ -f /usr/local/bin/ssserver ]; then
+    BIN=/usr/local/bin/ssserver
+fi
+SSSERVER=${BIN}
 
 SSSERVER_NAME=`basename $SSSERVER`
 
